@@ -80,7 +80,7 @@ public class customers extends HttpServlet {
 			
 			
 			//"select * from students where  a_type ='"+as_type+"'";
-			System.out.println(sql);
+			//System.out.println(sql);
 		    //creating PreparedStatement object to execute query
 		
 		    PreparedStatement preStatement = null;
@@ -123,8 +123,8 @@ public class customers extends HttpServlet {
 							" where (lastname like '%"+search+"%' or companies.company like '%"+search+"%') and"+
 							" (locations.ID = customers.CITY and customers.company = companies.id)";
 					
-					//"select * from students where  a_type ='"+as_type+"'";
-					System.out.println(sql);
+					///"select * from students where  a_type ='"+as_type+"'";
+					//System.out.println(sql);
 				    //creating PreparedStatement object to execute query
 				
 				   preStatement = null;
