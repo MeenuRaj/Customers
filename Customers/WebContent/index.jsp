@@ -24,7 +24,7 @@
 
  
  
-<title>Grade Book</title>
+<title></title>
 </head>
 <body>
 

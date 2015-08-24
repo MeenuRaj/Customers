@@ -76,11 +76,7 @@ public class customers extends HttpServlet {
 					" where lastname like '"+search+"' and"+
 					" locations.id = customers.city and"+
 					" customers.company = companies.id";
-			
-			
-			
-			//"select * from students where  a_type ='"+as_type+"'";
-			//System.out.println(sql);
+		
 		    //creating PreparedStatement object to execute query
 		
 		    PreparedStatement preStatement = null;
@@ -94,12 +90,12 @@ public class customers extends HttpServlet {
 			}
 	
 		
-			
+			message= "<thead><tr><th>Title</th><th>Firstname</th><th>Lastname</th><th>Street Address</th><th>City</th><th>State</th><th>Zipcode</th><th>Email Address</th><th>Company</th><th>Position in Company</th></tr></thead>";
 			try {
 				if (result.next())
 				{
 					try {
-					message= "<thead><tr><th>Title</th><th>Firstname</th><th>Lastname</th><th>Street Address</th><th>City</th><th>State</th><th>Zipcode</th><th>Email Address</th><th>Company</th><th>Position in Company</th></tr></thead>";
+					
 					while(result.next()){
 						
 						//message += "<tr><td>"+result.getString("TITLE")+"</td><td>"+result.getString("FIRSTNAME")+"</td><td>"+result.getString("LASTNAME")+"</td><td>"+result.getString("STREETADDRESS")+"</td><td>"+result.getString("locations.CITY")+"</td><td>"+result.getString("locations.STATES")+"</td><td>"+result.getString("customers.ZIPCODE")+"</td><td>"+result.getString("customers.EMAILADDRESS")+"</td><td>"+result.getString("companies.COMPANY")+"</td><td>"+result.getString("customers.POSITION")+"</td></tr>\n";
@@ -142,7 +138,6 @@ public class customers extends HttpServlet {
 					}
 					
 					try {
-						message= "<thead><tr><th>Student ID</th><th>Class</th><th>Assignment</th><th>Assignment Type</th><th>Date</th><th>Garde</th></tr></thead>";
 						while(result.next()){
 							message += "<tr><td>"+result.getString(1)+
 									"</td><td>"+result.getString(2)+
@@ -173,11 +168,14 @@ public class customers extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+			if (message.equals("<thead><tr><th>Title</th><th>Firstname</th><th>Lastname</th><th>Street Address</th><th>City</th><th>State</th><th>Zipcode</th><th>Email Address</th><th>Company</th><th>Position in Company</th></tr></thead>"))
+				message = "Result not found";
 			 //System.out.println("NAme is" +name);
 		     request.setAttribute("message", message);
 		     getServletContext()
 		     .getRequestDispatcher("/output.jsp")
 		     .forward(request,  response);
+		     
 		     
 	    } 
 	      
